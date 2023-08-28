@@ -4,8 +4,14 @@ services:
      image: jamesits/dst-server:latest
      restart: "on-failure:5"
      ports:
-        - "10999-11000:10999-11000/udp"
-        - "12346-12347:12346-12347/udp"
+        - "10888:10888/udp"#集群端口
+        - "10998-10999:10998-10999/udp"#server端口,包含地上地下
+        - "8766-8767:8766-8767/udp"#授权端口,udp/tcp都开
+        - "8766-8767:8766-8767/tcp"
+        - "27017:27017/udp"
+        - "27017:27017/tcp"
+        - "12346:12346/udp"
+        - "12346:12346/tcp"
      volumes:
         - ~/.klei/DoNotStarveTogether:/data
      stop_grace_period: 6m
